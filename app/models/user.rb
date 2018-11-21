@@ -5,5 +5,7 @@ class User < ApplicationRecord
 	# VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i	# Initial format regex
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 	validates :email, presence: true, length: { maximum: 255 },
-										format: { with: VALID_EMAIL_REGEX }
+										format: { with: VALID_EMAIL_REGEX },
+										# uniqueness: true	# Rails infers that uniqueness should be true below
+										uniqueness: { case_sensitive: false }
 end
